@@ -7,10 +7,8 @@ public class QueryProcessor {
 
     public String process(String query) {
 		query = query.toLowerCase();
-        if(query.contains("what is your name")){
-            return "GiaBao";
-        }else{
-            if (query.contains("which of the following numbers is the largest:")){
+
+            if (query.contains("which of the following numbers is the largest: ")){
                 query=query.replace("which of the following numbers is the largest: ","");
                 String[] numbers=query.split(", ");
                 int x = 0;
@@ -18,8 +16,20 @@ public class QueryProcessor {
                     if(Integer.getInteger(n)>x){x=Integer.getInteger(n);}
                 }
                 return String.valueOf(x);
+            }else{
+                if(query.contains("what is")){
+                    query=query.replace("what is","");
+                    query=query.replace("plus ","");
+                    String[] numbers=query.split(" ");
+                    int x = 0;
+                    for (String n:numbers) {
+                        x+=Integer.getInteger(n);
+                    }
+                    return String.valueOf(x);
+                }
+
             }
-        }
+
         return "";
     }
 }
