@@ -9,13 +9,17 @@ public class QueryProcessor {
 		query = query.toLowerCase();
         if(query.contains("what is your name")){
             return "GiaBao";
+        }else{
+            if (query.contains("which of the following numbers is the largest:")){
+                query=query.replace("which of the following numbers is the largest: ","");
+                String[] numbers=query.split(", ");
+                int x = 0;
+                for (String n:numbers) {
+                    if(Integer.getInteger(n)>x){x=Integer.getInteger(n);}
+                }
+                return String.valueOf(x);
+            }
         }
-        if (query.contains("shakespeare")) {
-            return "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
-                    "English poet, playwright, and actor, widely regarded as the greatest " +
-                    "writer in the English language and the world's pre-eminent dramatist.";
-        } else { // TODO extend the programm here
-            return "";
-        }
+        return "";
     }
 }
