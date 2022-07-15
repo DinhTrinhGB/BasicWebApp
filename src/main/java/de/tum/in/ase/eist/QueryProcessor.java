@@ -7,7 +7,6 @@ public class QueryProcessor {
 
     public String process(String query) {
 		query = query.toLowerCase();
-        query = query.replace(query.substring(0,10),"");
             if (query.contains("which of the following numbers is the largest: ")){
                 query=query.replace("which of the following numbers is the largest: ","");
                 String[] numbers=query.split(", ");
